@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box2{
+            margin-left: 200px;
+        }
+        form{
+            border: 2px solid blue;
+            padding: 10px;
+            margin:300px;
+            width: 60%;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        姓名：<input type="text" placeholder="请输入x的值" name="x" id="x"><br>
+        密码：<input type="text" placeholder="请输入y的值" name="y" id="y"><br>
+        <button style="margin-left: 35%; height: 50px; width: 70px;" onclick="aa()">大小比较</button>
+    </div>
+    <div>
+        请输入当前月份：<input type="text" placeholder="请输入当前月份的值" id="month"><br>
+        <button style="height: 50px; width: 70px;" onclick="bb()">月份测试</button>
+    </div>
+    <script>
+        function aa() {
+            var x = document.getElementById("x").value;
+            var y = document.getElementById("y").value;
+            if (x > y) {
+                alert("x大于y");
+            } else if (x < y) {
+                alert("x小于y");
+            } else {
+                alert("x等于y");
+            }
+        }
+
+        function bb() {
+            var month = document.getElementById("month").value;
+            switch (month) {
+                case "1":                            //判断月份
+                    alert("1月份");
+                    break;
+                case "2":
+                    alert("2月份");
+                    break;
+                case "3":
+                    alert("3月份");
+                    break;
+                case "4":
+                    alert("4月份");
+                    break;
+                case "5":
+                    alert("5月份");
+                    break;                 //结束判断
+                default:
+                    alert("月份输入错误");      //输入错误提示
+            }
+        }
+    </script>
+</body>
+</html>
