@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算器</title>
+    <style>
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+   
+.calculator {
+    width: 300px;
+    padding: 20px;
+   
+    border: 2px solid #ccc;      
+    border-radius: 8px;           
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+    input[type="number"] {
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0;
+        border: 1px solid rgb(240, 234, 234);
+        box-sizing: border-box;
+    }
+
+    .buttons {
+        display: flex;
+        gap: 10px;
+        margin: 15px 0;
+    }
+
+    button {
+        flex: 1;
+        padding: 12px;
+        border: none;
+        color: white;
+        font-size: 18px;
+    }
+
+    .jia { background: #4CAF50; }
+    .jian { background: #f44336; }
+    .cheng { background: #2196F3; }
+    .chu { background: #FF9800; }
+
+    .result {
+        padding: 15px;
+        text-align: center;
+        font-size: 20px;
+    }
+
+    .error {
+        color: red;
+    }
+
+
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div>
+            <input type="number" id="number1" placeholder=" 数字1">
+            <input type="number" id="number2" placeholder="数字 2">
+        </div>
+        <div class="buttons">
+            <button class="jia" onclick="calculate('+')">+</button>
+            <button class="jian" onclick="calculate('-')">-</button>
+            <button class="cheng" onclick="calculate('*')">×</button>
+            <button class="chu" onclick="calculate('/')">÷</button>
+        </div>
+        <div class="result" id="result">0</div>
+    </div>
+
+    <script>
+        const resultElement = document.getElementById('result');
+        
+        function calculate(operation) {
+            const num1 = parseFloat(document.getElementById('number1').value);
+            const num2 = parseFloat(document.getElementById('number2').value);
+            resultElement.classList.remove('error');
+            if (isNaN(num1) || isNaN(num2)) {
+                showError("请输入有效数字");
+                return;
+            }
+            try {
+                let result;
+                switch(operation) {
+                    case '+':
+                        result = num1 + num2; 
+                        break;
+                    case '-':
+                        result = num1 - num2;  
+                    case '*':
+                        result = num1 * num2;  
+                        break;
+                    case '/':
+                        if (num2 === 0) {     
+                            showError("除数不能为零");
+                            return;
+                        }
+                        result = num1 / num2;
+                        break;
+                    default:
+                        throw new Error('无效操作符');
+                }
+    
+                if (!isFinite(result)) {
+                    throw new Error('结果超出范围');
+                }
+                resultElement.textContent = formatResult(result);
+            } catch (error) {
+                const message = error.message === '结果超出范围' ? error.message : '计算错误';
+                showError(message);
+            }
+        }
+        function showError(message) {
+            resultElement.textContent = message;
+            resultElement.classList.add('error');
+        }
+        function formatResult(result) {
+            const rounded = Number(result.toFixed(4));
+            return rounded % 1 === 0 ? 
+                rounded.toString() : 
+                rounded.toLocaleString().replace(/\.?0+$/, '');
+        }
+    </script>
+</body>
+</html>
