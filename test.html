@@ -1,29 +1,38 @@
 <!DOCTYPE html>
-<html lang="zh">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>下拉菜单示例</title>
-
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>三次登录</title>
 </head>
-
 <body>
-    <div class="navbar">
-        <ul>
-            <li><a href="#">首页</a></li>
-            <li>
-                <a href="#">服务</a>
-                <ul class="dropdown">
-                    <li><a href="#">设计</a></li>
-                    <li><a href="#">开发</a></li>
-                    <li><a href="#">营销</a></li>
-                </ul>
-            </li>
-            <li><a href="#">关于我们</a></li>
-            <li><a href="#">联系</a></li>
-        </ul>
-    </div>
-</body>
+    <form action="" method="POST" id="myForm" name="myForm">
+    姓名：<input type="text" name="name" id="name"><br><br>
+    密码：<input type="password" name="password1" id="password"><br><br>
 
+    <input type="button" value="提交" onclick="aa()"> 
+    <input type="reset" value="重置">
+    </form>
+    <script> 
+      i=3;
+    function aa() {
+      
+        x=document.getElementById("name").value;
+      //  y=document.getElementById("password");
+        y=myForm.password.value;
+        if(x=="admin" && y=="123456") { window.location.href="111.png"; }
+        else { 
+           {    alert("你还有"+i+"次机会"); 
+                x=document.getElementById("name").value;
+               y=document.getElementById("password").value;
+                if(x=="admin" && y=="123456") { window.location.href="111.png"; }
+               i--;
+               
+
+            }
+            
+        }}
+    </script>
+</body>
 </html>
