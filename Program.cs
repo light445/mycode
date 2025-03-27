@@ -13,26 +13,29 @@ namespace 日常
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            Console.WriteLine("今天是2025.3.26");
-           
-            for (int i = 0 ; ; i++)
-            {
-                Console.WriteLine("请输入你的名字");
-                string name=Console.ReadLine();
-                if(name=="李白")
-                Console.WriteLine("你好，李太白");
-                else
-                {
-                    Console.WriteLine("你好，"+name);
-                } 
-                
-            }
+            Console.WriteLine("今天是2025.3.27");
+            
+            shuchu();
 
          
             
 
         }
-       
-        
+        static void shuchu()
+        {
+            while (true) { 
+            Console.WriteLine("请输入你的名字");
+            string name = Console.ReadLine();
+                if (name == "exit")
+                {
+                    break;
+                }
+                else { Console.WriteLine("hello" + name); }
+            }
+           
+        }
+
     }
+
+
 }
